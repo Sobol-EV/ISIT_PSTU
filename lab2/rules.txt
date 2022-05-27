@@ -1,0 +1,22 @@
+determine-engine-state||(current_dict['engine-starts'] == None)  and (current_dict['repair'] == None)||engine-starts
+determine-runs-normally||(current_dict['engine-starts'] == True) and (current_dict['repair'] == None)||runs-normally
+determine-rotation-state||(current_dict['engine-starts'] == False) and (current_dict['repair'] == None)||engine-rotates
+determine-sluggishness||(current_dict['runs-normally'] == False) and (current_dict['repair'] == None)||engine-sluggish
+determine-misfiring||(current_dict['runs-normally'] == False) and (current_dict['repair'] == None)||engine-misfires
+determine-knocking||(current_dict['runs-normally'] == False) and (current_dict['repair'] == None)||engine-knocks
+determine-low-output||(current_dict['runs-normally'] == False) and (current_dict['repair'] == None)||engine-output-low
+determine-gas-level||(current_dict['engine-starts'] == False) and (current_dict['engine-rotates'] == True) and (current_dict['repair'] == None)||tank-has-gas
+determine-battery-state||(current_dict['engine-rotates'] == False) and (current_dict['repair'] == None)||battery-has-charge
+determine-point-surface-state||((current_dict['engine-starts'] == False) and (current_dict['engine-rotates'] == True)) or ((current_dict['engine-output-low'] == True) and (current_dict['repair'] == None))||point-surface-state
+defrule determine-conductivity-test||(current_dict['engine-starts'] == False) and (current_dict['engine-rotates'] == False) and (current_dict['battery-has-charge'] == True) and (current_dict['repair'] == None)||conductivity-test-positive
+defrule normal-engine-state-conclusions||(current_dict['runs-normally'] == True) and (current_dict['repair'] == None)||"Ремонт не требуется."
+defrule engine-sluggish||(current_dict['engine-sluggish'] == True) and (current_dict['repair'] == None)||"Очистите топливопровод."
+defrule engine-misfires||(current_dict['engine-misfires'] == True) and (current_dict['repair'] == None)||"Регулировка точечного зазора."
+defrule engine-knocks||(current_dict['engine-knocks'] == True) and (current_dict['repair'] == None)||"Регулировка тайминтга двигателя"
+defrule tank-out-of-gas||(current_dict['tank-has-gas'] ==  False) and (current_dict['repair'] == None)||"Добавьте газ."
+defrule battery-dead||(current_dict['battery-has-charge'] ==  False) and (current_dict['repair'] == None)||"Зарядите аккумулятор."
+defrule point-surface-state-burned||(current_dict['point-surface-state'] == 'burned') and (current_dict['repair'] == None)||"Замените контакты."
+defrule point-surface-state-contaminated||(current_dict['point-surface-state'] == 'contaminated') and (current_dict['repair'] == None)||"Очистите контакты."
+defrule conductivity-test-positive-yes||(current_dict['conductivity-test-positive'] == True) and (current_dict['repair'] == None)||"Отремонтируйте подводящий провод распределителя."
+defrule conductivity-test-positive-no||(current_dict['conductivity-test-positive'] ==  False) and (current_dict['repair'] == None)||"Замените катушку зажигания."
+defrule no-repairs||current_dict['repair'] == None||"Обратитесь в автосервис, для диагностики!"

@@ -1,0 +1,11 @@
+engine-starts||"Запускается ли двигатель (да - True / нет - False)?"
+runs-normally||"Двигатель работает нормально (да - True / нет - False)?"
+engine-rotates||"Вращается ли двигатель (да - True / нет - False)? "
+engine-sluggish||"Работает ли двигатель вяло (да - True / нет - False)?"
+engine-misfires||"Имеет ли двигатель пропуски зажигания (да - True / нет - False)?"
+engine-knocks||"Стук в двигателе (да - True / нет - False)?"
+engine-output-low||"Мощность двигателя низкая (да - True / нет - False)?"
+tank-has-gas||"Есть ли в баке бензин (да - True / нет - False)?"
+battery-has-charge||"Аккумулятор заряжен (да - True / нет - False)?"
+point-surface-state||"Каково состояние контактов на катушке? (normal - нормальный / burned - сгоревшие / contaminated - загрязненный)?"||[normal,burned,contaminated]
+conductivity-test-positive||"Проверка проводимости катушки зажигания положительна (да - True / нет - False)?"

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Neural network demo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="brainfiles/ABC.js"></script>
+    <script src="script/Brain.js"></script>
+    <script src="script/Ui.js"></script>
+    <script src="script/Ocr.js"></script>
+   
+
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Демонстрация нейронной сети — простое распознавание символов</h1>
+    <p>
+        <b>Демонстрационные инструкции:</b>
+        <ul>
+            <li>Нарисуйте символ (A, B или C) в левом квадрате.</li>
+            <li>Нажмите «Читать». Уменьшенная версия рисунка отображается в среднем квадрате.</li>
+            <li>Теперь сеть пытается угадать, что вы нарисовали, и отображает символ в правом правом квадрате.</li>
+        </ul>
+        <b>Инструкции по обучению:</b><br/>
+        Предустановленная сеть знает только символы A, B и C. Вы можете улучшить распознавание этих символов или добавить новые символы по своему вкусу.
+        <ul>
+            <li>Введите символ для обучения в поле ввода.</li>
+            <li>Нарисуйте персонажа в левом квадрате.</li>
+            <li>Нажмите «Обучить персонажа».</li>
+            <li>Повторите это с разными рисунками одного и того же персонажа, чтобы обучить сеть.</li>
+        </ul>
+    </p>
+    <div>
+        <div style="float: left;">
+            <span>Ваш рисунок (150 х 150):</span><br />
+            <canvas id="canvas" width="150" height="150"></canvas>
+        </div>
+        <div style="float: left; margin-left: 15px;">
+            <span>Контурная сетка (15x15):</span><br />
+            <canvas id="outlines" width="150" height="150"></canvas>
+        </div>
+        <div id="output">
+            <span>
+                Выход:<br />
+            </span>
+            <span id="bestGuess">
+            </span>
+        </div>
+    </div>
+    <div style="clear:both;">
+        <button id="clear">Очистить</button>
+        <button id="read">Читать</button>
+    </div>
+    <hr />
+    <div>
+        <input type="text" value="A" maxlength="1" id="txtCharacter" />
+        <button id="trainCharacter">Учить символ</button>
+        
+        <div id="outputValues"></div></div>
+</body>
+
+</html>
